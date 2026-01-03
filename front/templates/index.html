@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+    <main class="container">
+        <div class="card">
+            <div class="card-icon">➕</div>
+            <h2>Nueva Orden</h2>
+            <p>Registra los pedidos de los clientes de forma rápida.</p>
+            <a href="{{url_for('nueva_comanda_bp.nueva_comanda', _external=true)}}" class="btn btn-primary">Nueva Comanda</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">🍔</div>
+                <h2>Cargar al menu</h2>
+                <p>Carga nuevos productos al menu.</p>
+                <a href="{{url_for('menu_bp.menu', _external=true)}}" class="btn btn-third">Nuevo producto</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h2>Historial</h2>
+            <p>Revisa y gestiona las comandas activas o pasadas.</p>
+            <a href="{{url_for('historial_comandas_bp.historial_comandas', _external=true)}}" class="btn btn-secondary">Ver Comandas</a>
+        </div>
+    </main>
+
+{% endblock %}

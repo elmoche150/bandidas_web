@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <main class="comanda-container">
+        <section class="comanda-card">
+
+            <div class="comanda-header">
+            <h2>Nueva Comanda</h2>
+            <span class="comanda-date" id="fecha"></span>
+            </div>
+
+       
+
+            <div class="form-group">
+                <select id="producto">
+                    <option disabled selected>Elegí un producto</option>
+                    <optgroup label="Comidas" id="grupo-comidas"></optgroup>
+                    <optgroup label="Bebidas" id="grupo-bebidas"></optgroup>
+                </select>
+                <input type="number" id="cantidad" value="1" min="1">
+                
+            </div>
+
+            <div class="order-list">
+                <h3>Resumen del pedido</h3>
+                <div id="lista"></div>
+
+                <!-- JS mete los items acá -->
+                <div id="listaItems"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="notas">Observaciones del producto</label>
+                <textarea id="notas" placeholder="Ej: sin cebolla, sin sal, etc..."></textarea>
+            </div>
+            <button id="agregar" class="btn btn-third">AGREGAR PRODUCTO</button>
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" id="cancelar">Cancelar</button>
+                <button type="submit" class="btn-submit" id="enviar">Enviar a Cocina</button>
+            </div>
+
+            </form>
+        </section>
+    </main>
+    
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

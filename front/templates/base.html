@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Comandas</title>
+     <link rel ="stylesheet" href = {{url_for('static',filename= 'css/style.css', _external=true)}}>
+</head>
+
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src={{url_for('static',filename= 'images/logo.jpg', _external=true)}} alt="Logo" class="logo-img">
+            <h1>Bandida Burger</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{url_for('index_bp.index', _external=true)}}">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {%block content %}
+
+    {% endblock %}
+    
+
+
+    <footer>
+        <p>&copy; 2026 Bandida Burger - Todos los derechos reservados.</p>
+    </footer>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
