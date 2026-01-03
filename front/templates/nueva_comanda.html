@@ -5,63 +5,48 @@
 
     <main class="comanda-container">
         <section class="comanda-card">
+
             <div class="comanda-header">
-                <h2>Nueva Comanda</h2>
-                <span class="comanda-date">2026-01-02</span>
+            <h2>Nueva Comanda</h2>
+            <span class="comanda-date" id="fecha"></span>
             </div>
 
-            <form class="comanda-form">
-                <div class="form-group">
-                    <label for="producto">Seleccionar Producto</label>
-                    <div class="add-product-row">
-                        <select id="producto">
-                            <option value="" disabled selected>Elige un plato o bebida...</option>
-                            
-                            <optgroup label="Entradas">
-                                <option value="nachos">Nachos con Queso</option>
-                                <option value="alitas">Alitas BBQ</option>
-                            </optgroup>
-                            
-                            <optgroup label="Platos Fuertes">
-                                <option value="hamburguesa">Hamburguesa Especial</option>
-                                <option value="pizza">Pizza Margarita</option>
-                                <option value="tacos">Orden de Tacos</option>
-                            </optgroup>
-                            
-                            <optgroup label="Bebidas">
-                                <option value="refresco">Refresco de Cola</option>
-                                <option value="cerveza">Cerveza Nacional</option>
-                                <option value="jugo">Jugo Natural</option>
-                            </optgroup>
-                        </select>
+       
 
-                        <input type="number" id="cantidad" value="1" min="1" class="qty-input">
-                        <button type="button" class="btn-add" title="Añadir a la lista">+</button>
-                    </div>
-                </div>
-                <div class="order-list">
-                    <p class="list-title">Resumen de Pedido</p>
-                    <div class="order-item">
-                        <span>1x Hamburguesa Especial</span>
-                        <span class="remove-item">✕</span>
-                    </div>
-                    <div class="order-item">
-                        <span>2x Refresco de Cola</span>
-                        <span class="remove-item">✕</span>
-                    </div>
-                </div>
+            <div class="form-group">
+                <select id="producto">
+                    <option disabled selected>Elegí un producto</option>
+                    <optgroup label="Comidas" id="grupo-comidas"></optgroup>
+                    <optgroup label="Bebidas" id="grupo-bebidas"></optgroup>
+                </select>
+                <input type="number" id="cantidad" value="1" min="1">
+                
+            </div>
 
-                <div class="form-group">
-                    <label for="notas">Observaciones / Alergias</label>
-                    <textarea id="notas" rows="3" placeholder="Sin cebolla, término medio, etc..."></textarea>
-                </div>
+            <div class="order-list">
+                <h3>Resumen del pedido</h3>
+                <div id="lista"></div>
 
-                <div class="form-actions">
-                    <button type="button" class="btn-cancel">Cancelar</button>
-                    <button type="submit" class="btn-submit">Enviar a Cocina</button>
-                </div>
+                <!-- JS mete los items acá -->
+                <div id="listaItems"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="notas">Observaciones del producto</label>
+                <textarea id="notas" placeholder="Ej: sin cebolla, sin sal, etc..."></textarea>
+            </div>
+            <button id="agregar" class="btn btn-third">AGREGAR PRODUCTO</button>
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" id="cancelar">Cancelar</button>
+                <button type="submit" class="btn-submit" id="enviar">Enviar a Cocina</button>
+            </div>
+
             </form>
         </section>
     </main>
+    
+{% endblock %}
 
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}

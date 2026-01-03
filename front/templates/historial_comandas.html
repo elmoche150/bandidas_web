@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class="dashboard-container">
+        <nav class="sub-navbar">
+            <button class="filter-btn active" id="btn-pendientes" onclick="cambiarFiltro('pendiente')">Pendientes</button>
+            <button class="filter-btn" id="btn-realizadas" onclick="cambiarFiltro('terminada')">Realizadas</button>
+        </nav>
+
+        <div class="comandas-grid" id="comandas-container">
+            </div>
+    </main>
+    
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/historial_js.js') }}"></script>
+{% endblock %}
