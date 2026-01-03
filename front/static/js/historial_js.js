@@ -10,7 +10,6 @@ async function cargarComandas() {
     if (!contenedor) return;
 
     try {
-         http://localhost:5006/historial_comandas
         const response = await fetch(API_URL_GET);
         
         if (!response.ok) throw new Error("No se pudo obtener datos del servidor");

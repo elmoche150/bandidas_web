@@ -20,4 +20,4 @@ app.register_blueprint(menu_bp, url_prefix="/menu")
 
 
 if __name__  == "__main__":
-    app.run("localhost", port= "5003", debug=True)
+    app.run(host="0.0.0.0", port= "5003", debug=True)
