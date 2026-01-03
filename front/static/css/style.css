@@ -434,4 +434,21 @@ input:focus, select:focus, textarea:focus {
 
 .btn-completar:hover { background: #27ae60; }
 
+/* Mejora visual para los inputs de carga */
+input[type="text"]:focus, 
+input[type="number"]:focus, 
+select:focus {
+    border-color: #27ae60;
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.2);
+    outline: none;
+}
+
+.btn-submit {
+    background-color: #27ae60;
+    transition: transform 0.2s ease;
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
 
