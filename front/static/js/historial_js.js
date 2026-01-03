@@ -1,3 +1,8 @@
+const servidorIP = window.location.hostname; 
+const API_URL_GET = `http://${servidorIP}:5006/historial_comandas`;
+const API_URL_PATCH = `http://${servidorIP}:5006/comandas`;
+
+
 let filtroActual = 'pendiente';
 
 async function cargarComandas() {
@@ -5,15 +10,15 @@ async function cargarComandas() {
     if (!contenedor) return;
 
     try {
-        // Usamos la URL que confirmaste: http://localhost:5006/historial_comandas
-        const response = await fetch("http://localhost:5006/historial_comandas");
+         http://localhost:5006/historial_comandas
+        const response = await fetch(API_URL_GET);
         
         if (!response.ok) throw new Error("No se pudo obtener datos del servidor");
         
         const comandas = await response.json();
         
         contenedor.innerHTML = "";
-        // Filtramos por estado según la base de datos
+        
         const filtradas = comandas.filter(c => c.estado === filtroActual);
 
         if (filtradas.length === 0) {
@@ -25,7 +30,7 @@ async function cargarComandas() {
             const card = document.createElement("div");
             card.className = `comanda-card ${comanda.estado}`;
             
-            // Generamos la lista de productos basada en la tabla comanda_items
+            
             let itemsHtml = comanda.items.map(item => `
                 <div class="item-line">
                     <strong>${item.cantidad}x</strong> ${item.nombre}
@@ -56,13 +61,13 @@ window.cambiarFiltro = (estado) => {
 
 window.finalizarComanda = async (id) => {
     try {
-        // Llamada al puerto 5006 con la ruta nueva
-        const res = await fetch(`http://localhost:5006/comandas/${id}/finalizar`, { 
+        
+        const res = await fetch(`${API_URL_PATCH}/${id}/finalizar`, { 
             method: 'PATCH' 
         });
         
         if (res.ok) {
-            // Recargamos la lista para que el ticket desaparezca de "Pendientes"
+            
             cargarComandas(); 
         } else {
             alert("No se pudo finalizar la comanda");

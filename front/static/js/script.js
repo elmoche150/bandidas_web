@@ -1,3 +1,7 @@
+const servidorIP = window.location.hostname;
+const URL_MENU = `http://${servidorIP}:5006/menu`;
+const URL_COMANDAS = `http://${servidorIP}:5006/comandas`;
+
 // ELEMENTOS DEL DOM
 const grupoComidas = document.getElementById("grupo-comidas");
 const grupoBebidas = document.getElementById("grupo-bebidas");
@@ -11,7 +15,7 @@ const btnEnviar = document.getElementById("enviar");
 let itemsPedido = [];
 
 // CARGAR MENU
-fetch("http://localhost:5006/menu")
+fetch(URL_MENU)
     .then(res => res.json())
     .then(menu => {
         menu.forEach(p => {
@@ -70,7 +74,7 @@ window.eliminarDelResumen = (index) => {
 btnEnviar.addEventListener("click", () => {
     if (itemsPedido.length === 0) return alert("Pedido vacío");
 
-    fetch("http://localhost:5006/comandas", {
+    fetch(URL_COMANDAS, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ items: itemsPedido })

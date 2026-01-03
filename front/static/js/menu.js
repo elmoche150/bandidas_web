@@ -1,5 +1,8 @@
 document.getElementById('form-menu').addEventListener('submit', async (e) => {
         e.preventDefault();
+
+    const servidorIP = window.location.hostname;
+    const API_URL = `http://${servidorIP}:5006/menu_agregar`;
         
         const data = {
             nombre: document.getElementById('menu-nombre').value,
@@ -8,7 +11,7 @@ document.getElementById('form-menu').addEventListener('submit', async (e) => {
         };
 
         try {
-            const res = await fetch("http://localhost:5006/menu_agregar", {
+            const res = await fetch(API_URL, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data)
